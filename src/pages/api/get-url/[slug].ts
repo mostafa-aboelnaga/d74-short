@@ -20,6 +20,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (!data) {
     res.statusCode = 404;
+    res.setHeader("Content-Type", "application/json")
+    res.setHeader("Acess-Control-Allow-Origin", "*")
+    res.setHeader("Cache-Control", "s-maxage=1000000000, stale-while-revalidate")
     return res.send(
       JSON.stringify({ message: "URL not found, please use a valid slug" }),
     );
